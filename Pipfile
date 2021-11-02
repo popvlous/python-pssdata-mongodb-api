@@ -16,6 +16,7 @@ aiohttp = "*"
 apscheduler = "*"
 pymysql = "*"
 sqlalchemy = "*"
+mongoengine = "*"
 
 [requires]
 python_version = "3.7"

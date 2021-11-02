@@ -1,16 +1,16 @@
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
-import pymysql
+#import pymysql
 from flask import Flask, jsonify, request, redirect
 from flask.logging import default_handler
+from flask_mongoengine import MongoEngine
 from config import config_dict
-from model import db
 from flask_apscheduler import APScheduler
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
-pymysql.install_as_MySQLdb()
+#pymysql.install_as_MySQLdb()
 scheduler = APScheduler(BackgroundScheduler(timezone="Asia/Shanghai"))
 
 
@@ -19,6 +19,8 @@ scheduler = APScheduler(BackgroundScheduler(timezone="Asia/Shanghai"))
 # db = conn.sds
 # collection = db.users
 # collection1 = db.inspections
+
+db = MongoEngine()
 
 # 正式環境請修正mode = 'Production'
 
@@ -33,7 +35,7 @@ else:
 
 app.config.from_object(config)
 
-print(config.SQLALCHEMY_DATABASE_URI)
+print(config.MONGODB_SETTINGS)
 
 # 移除預設的handler
 app.logger.removeHandler(default_handler)
@@ -57,7 +59,7 @@ stream_handler.setLevel(logging.DEBUG)
 app.logger.addHandler(stream_handler)
 
 if mode == 'Debug':
-    app.logger.info('DBMS        = ' + config.SQLALCHEMY_DATABASE_URI)
+    app.logger.info('DBMS        = ' + config.MONGODB_SETTINGS['host'])
 
 db.init_app(app)
 scheduler.init_app(app)
