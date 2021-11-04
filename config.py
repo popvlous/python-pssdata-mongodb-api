@@ -16,8 +16,8 @@ class Config(object):
         'username': 'openfire',
         'password': 'Foxconn88',
         'connect': True,
-        'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
-        #'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
+        #'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
+        'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
         'authentication_source': 'admin'
     }
 
@@ -43,7 +43,9 @@ class Config(object):
     DOMAIN_URL = 'https://member-api.tpp.org.tw/'
     DATA_TOKEN = 'ENXsCAbfyXYqincPulKe'
 
-SCHEDULER_API_ENABLED = True  # 新增API
+    LINE_TOKEN = 'qUYZTP3u08ugL8mCGJNSKJis45VlHO3RnjWdCuWUcoZ'
+
+    SCHEDULER_API_ENABLED = True  # 新增API
 
 
 class ProductionConfig(Config):
@@ -86,6 +88,10 @@ class ProductionConfig(Config):
 
     DOMAIN_URL = 'https://member-api.tpp.org.tw/'
     DATA_TOKEN = 'ENXsCAbfyXYqincPulKe'
+
+    LINE_TOKEN = 'qUYZTP3u08ugL8mCGJNSKJis45VlHO3RnjWdCuWUcoZ'
+
+    SCHEDULER_API_ENABLED = True  # 新增API
 
 
 
