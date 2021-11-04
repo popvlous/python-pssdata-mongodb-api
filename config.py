@@ -10,35 +10,14 @@ pymysql.install_as_MySQLdb()
 
 
 class Config(object):
-    # This will create a file in <app> FOLDER
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
-    # SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
-    #     'mysql',
-    #     'civetpublic',
-    #     'Foxconn99',
-    #     '104.155.228.163',
-    #     3306,
-    #     'openfire'
-    #     # 'mysql',
-    #     # 'root',
-    #     # 'root',
-    #     # '127.0.0.1',
-    #     # 3306,
-    #     # 'pcs'
-    # )
-    # SQLALCHEMY_TRACK_MODIFICATIONS = False
-    #
-    # SQLALCHEMY_ENGINE_OPTIONS = {
-    #     "pool_pre_ping": True,
-    #     "pool_recycle": 300,
-    # }
 
     MONGODB_SETTINGS = {
         'db': 'openfire',
         'username': 'openfire',
         'password': 'Foxconn88',
         'connect': True,
-        'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
+        'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
+        #'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
         'authentication_source': 'admin'
     }
 
@@ -76,14 +55,15 @@ class ProductionConfig(Config):
     REMEMBER_COOKIE_DURATION = 3600
 
     # PostgreSQL database
-    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
-        'mysql',
-        'civetpublic',
-        'Foxconn99',
-        '104.155.228.163',
-        3306,
-        'civet_public_srv'
-    )
+    MONGODB_SETTINGS = {
+        'db': 'openfire',
+        'username': 'openfire',
+        'password': 'Foxconn88',
+        'connect': True,
+        'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
+        #'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
+        'authentication_source': 'admin'
+    }
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -97,10 +77,15 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 16,
-        'minute': 17,
+        'hour': 5,
+        'minute': 1,
         'second': 10,
     }]
+
+    SCHEDULER_TIMEZONE = 'Asia/Shanghai'  # 配置時區
+
+    DOMAIN_URL = 'https://member-api.tpp.org.tw/'
+    DATA_TOKEN = 'ENXsCAbfyXYqincPulKe'
 
 
 

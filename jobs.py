@@ -12,6 +12,7 @@ def sendActionRecordJob():
     with app.app_context():
         try:
             data = TPP_API_lastday_tppuser_login_v.objects.all()
+            current_app.logger.info(f' 共 {len(data)} 筆，開始拋送資料 ')
             for data_info in data:
                 data_json = {
                     'account': data_info.username,
