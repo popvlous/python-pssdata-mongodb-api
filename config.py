@@ -38,8 +38,8 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 14,
-        'minute': 48,
+        'hour': 15,
+        'minute': 54,
         'second': 10,
     }]
 
@@ -84,8 +84,8 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 14,
-        'minute': 48,
+        'hour': 15,
+        'minute': 54,
         'second': 10,
     }]
 
