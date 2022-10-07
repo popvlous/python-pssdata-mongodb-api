@@ -4,39 +4,44 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os
-import pymysql
 
-pymysql.install_as_MySQLdb()
 
 
 class Config(object):
 
+
+    mongo_host = 'mongodb://{}:{}/{}'.format(
+        '35.221.188.167',
+        '24017', 'pssec_test')
+
     MONGODB_SETTINGS = {
-        'db': 'openfire',
-        'username': 'openfire',
-        'password': 'Foxconn88',
+        'db': 'pssec_test',
+        'username': 'pssec_testuser',
+        'password': 'pssec#pw202207ya',
         'connect': True,
-        #'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
-        'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
-        'authentication_source': 'admin'
+        'host': mongo_host,
+        'authentication_source': 'pssec_test'
     }
+
+    # MONGODB_SETTINGS = {
+    #     'db': 'openfire',
+    #     'username': 'openfire',
+    #     'password': 'Foxconn88',
+    #     'connect': True,
+    #     #'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
+    #     'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
+    #     'authentication_source': 'admin'
+    # }
 
     JOBS = [{
         'id': 'sendActionRecordJob',
         'func': 'jobs:sendActionRecordJob',
-        'trigger': 'interval',
-        'seconds': 10
+        'trigger': 'cron',
+        'day_of_week': '*',
+        'hour': 14,
+        'minute': 36,
+        'second': 10,
     }]
-
-    # JOBS = [{
-    #     'id': 'sendActionRecordJob',
-    #     'func': 'jobs:sendActionRecordJob',
-    #     'trigger': 'cron',
-    #     'day_of_week': '*',
-    #     'hour': 16,
-    #     'minute': 17,
-    #     'second': 10,
-    # }]
 
     SCHEDULER_TIMEZONE = 'Asia/Shanghai'  # 配置時區
 
@@ -79,9 +84,9 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 5,
-        'minute': 1,
-        'second': 10,
+        'hour': 10,
+        'minute': 26,
+        'second': 50,
     }]
 
     SCHEDULER_TIMEZONE = 'Asia/Shanghai'  # 配置時區
