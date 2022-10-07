@@ -52,9 +52,9 @@ class Config(object):
         'id': 'sendActionRecordJob',
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
-        'day_of_week': '*',
+        'day': '*',
         'hour': 16,
-        'minute': 15,
+        'minute': 30,
         'second': 10,
     }]
 
@@ -100,7 +100,7 @@ class ProductionConfig(Config):
         'trigger': 'cron',
         'day_of_week': '*',
         'hour': 16,
-        'minute': 15,
+        'minute': 30,
         'second': 10,
     }]
 
