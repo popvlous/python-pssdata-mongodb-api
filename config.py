@@ -98,7 +98,7 @@ class ProductionConfig(Config):
         'id': 'sendActionRecordJob',
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
-        'day_of_week': '*',
+        'day': '*',
         'hour': 16,
         'minute': 30,
         'second': 10,
