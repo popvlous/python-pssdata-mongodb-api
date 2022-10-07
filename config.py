@@ -39,7 +39,7 @@ class Config(object):
         'trigger': 'cron',
         'day_of_week': '*',
         'hour': 14,
-        'minute': 36,
+        'minute': 48,
         'second': 10,
     }]
 
@@ -84,9 +84,9 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 10,
-        'minute': 26,
-        'second': 50,
+        'hour': 14,
+        'minute': 48,
+        'second': 10,
     }]
 
     SCHEDULER_TIMEZONE = 'Asia/Shanghai'  # 配置時區
