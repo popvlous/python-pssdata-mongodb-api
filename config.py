@@ -10,9 +10,23 @@ import os
 class Config(object):
 
 
+    # mongo_host = 'mongodb://{}:{}/{}'.format(
+    #     '35.221.188.167',
+    #     '24017', 'pssec_test')
+    #
+    # MONGODB_SETTINGS = {
+    #     'db': 'pssec_test',
+    #     'username': 'pssec_testuser',
+    #     'password': 'pssec#pw202207ya',
+    #     'connect': True,
+    #     'host': mongo_host,
+    #     'authentication_source': 'pssec_test'
+    # }
+
+
     mongo_host = 'mongodb://{}:{}/{}'.format(
-        '35.221.188.167',
-        '24017', 'pssec_test')
+        '10.140.0.12',
+        '27017', 'pssec_test')
 
     MONGODB_SETTINGS = {
         'db': 'pssec_test',
@@ -22,6 +36,7 @@ class Config(object):
         'host': mongo_host,
         'authentication_source': 'pssec_test'
     }
+
 
     # MONGODB_SETTINGS = {
     #     'db': 'openfire',
@@ -38,8 +53,8 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 15,
-        'minute': 54,
+        'hour': 16,
+        'minute': 6,
         'second': 10,
     }]
 
@@ -84,8 +99,8 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day_of_week': '*',
-        'hour': 15,
-        'minute': 54,
+        'hour': 16,
+        'minute': 6,
         'second': 10,
     }]
 
