@@ -54,7 +54,7 @@ class Config(object):
         'trigger': 'cron',
         'day_of_week': '*',
         'hour': 16,
-        'minute': 6,
+        'minute': 11,
         'second': 10,
     }]
 
@@ -100,7 +100,7 @@ class ProductionConfig(Config):
         'trigger': 'cron',
         'day_of_week': '*',
         'hour': 16,
-        'minute': 6,
+        'minute': 11,
         'second': 10,
     }]
 
