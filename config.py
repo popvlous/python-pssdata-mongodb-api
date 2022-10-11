@@ -62,7 +62,7 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 15,
+        'hour': 16,
         'minute': 10,
         'second': 10,
     }]
@@ -135,7 +135,7 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 15,
+        'hour': 16,
         'minute': 10,
         'second': 10,
     }]
