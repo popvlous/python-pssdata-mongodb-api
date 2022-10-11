@@ -23,19 +23,28 @@ class Config(object):
     #     'authentication_source': 'pssec_test'
     # }
 
+    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
+        'mysql+pymysql',
+        'devuser2',
+        'devADMIN2020',
+        '35.221.251.51',
+        3306,
+        'pss2.0'
+    )
 
-    mongo_host = 'mongodb://{}:{}/{}'.format(
-        '10.140.0.12',
-        '27017', 'pssec_test')
 
-    MONGODB_SETTINGS = {
-        'db': 'pssec_test',
-        'username': 'pssec_testuser',
-        'password': 'pssec#pw202207ya',
-        'connect': True,
-        'host': mongo_host,
-        'authentication_source': 'pssec_test'
-    }
+    # mongo_host = 'mongodb://{}:{}/{}'.format(
+    #     '10.140.0.12',
+    #     '27017', 'pssec_test')
+    #
+    # MONGODB_SETTINGS = {
+    #     'db': 'pssec_test',
+    #     'username': 'pssec_testuser',
+    #     'password': 'pssec#pw202207ya',
+    #     'connect': True,
+    #     'host': mongo_host,
+    #     'authentication_source': 'pssec_test'
+    # }
 
 
     # MONGODB_SETTINGS = {
@@ -53,10 +62,27 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 16,
-        'minute': 30,
+        'hour': 15,
+        'minute': 10,
         'second': 10,
     }]
+
+    # JOBS = [{
+    #     'id': 'sendActionRecordJob',
+    #     'func': 'jobs:sendActionRecordJob',
+    #     'trigger': 'interval',
+    #     'seconds': 10
+    # }]
+
+    # JOBS = [{
+    #     'id': 'sendActionRecordJob',
+    #     'func': 'jobs:sendActionRecordJob',
+    #     'trigger': 'cron',
+    #     'day': '*',
+    #     'hour': 11,
+    #     'minute': 7,
+    #     'second': 10,
+    # }]
 
     SCHEDULER_TIMEZONE = 'Asia/Shanghai'  # 配置時區
 
@@ -77,15 +103,25 @@ class ProductionConfig(Config):
     REMEMBER_COOKIE_DURATION = 3600
 
     # PostgreSQL database
-    MONGODB_SETTINGS = {
-        'db': 'openfire',
-        'username': 'openfire',
-        'password': 'Foxconn88',
-        'connect': True,
-        'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
-        #'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
-        'authentication_source': 'admin'
-    }
+    # MONGODB_SETTINGS = {
+    #     'db': 'openfire',
+    #     'username': 'openfire',
+    #     'password': 'Foxconn88',
+    #     'connect': True,
+    #     'host': 'mongodb://10.140.0.36:15017,10.140.0.17:15017,10.140.0.12:15017/openfire',
+    #     #'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/openfire',
+    #     'authentication_source': 'admin'
+    # }
+
+    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
+        'mysql+pymysql',
+        'devuser2',
+        'devADMIN2020',
+        '35.221.251.51',
+        3306,
+        'pss2.0'
+    )
+
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -99,8 +135,8 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 16,
-        'minute': 30,
+        'hour': 15,
+        'minute': 10,
         'second': 10,
     }]
 

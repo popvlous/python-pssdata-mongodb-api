@@ -5,9 +5,10 @@ import requests
 from flask import current_app, jsonify
 
 from app import app, config
-from model import CovidInfo
+from model import db, CovidInfo
 from util import sendActionRecordByOne, lineNotifyMessage
 from bs4 import BeautifulSoup
+import uuid
 
 
 def sendActionRecordJob():
@@ -41,13 +42,13 @@ def sendActionRecordJob():
         url1 = 'https://covid-19.nchc.org.tw/dt_002-csse_covid_19_daily_reports_vaccine_city2.php'  # 台積電 Yahoo 股市網址
         web1 = requests.get(url1)  # 取得網頁內容
         soup1 = BeautifulSoup(web1.text, "html.parser")  # 轉換內容
-        dose_1st = ''
-        dose_2st = ''
+        dose1st = ''
+        dose2st = ''
         try:
             dose_rate = soup1.find_all("span", class_="country_deaths_percent", limit=3)[0].text  # 找到累積確診
             dose_list = dose_rate.split('%')
-            dose_1st = dose_list[0].split(' ')[1]
-            dose_2st = dose_list[1].split(' ')[1]
+            dose1st = dose_list[0].split(' ')[1]
+            dose2st = dose_list[1].split(' ')[1]
 
             lineNotifyMessage(config.LINE_TOKEN, f' 溫馨提醒: https://covid-19.nchc.org.tw/dt_002-csse_covid_19_daily_reports_vaccine_city2.php，抓取資料完畢 ')
         except Exception as err:
@@ -56,18 +57,27 @@ def sendActionRecordJob():
                               f'溫馨提醒: https://covid-19.nchc.org.tw/dt_002-csse_covid_19_daily_reports_vaccine_city2.php 發生錯誤: {err}')
 
 
-        remove_covids = CovidInfo.objects.all()
+        remove_covids = CovidInfo.query.all()
         for remove_covid in remove_covids:
-            remove_covid.delete()
+            CovidInfo.query.filter(CovidInfo.id == remove_covid.id).delete()
+            db.session.commit()
 
-        covid_info = CovidInfo(total_deaths=total_deaths,
-                               daily_deaths_tw=daily_deaths_tw,
-                               total_cases=total_cases,
-                               daily_cases=daily_cases,
-                               total_cases_tw=total_cases_tw,
-                               daily_cases_tw=daily_cases_tw,
-                               tw_vaccinated=tw_vaccinated,
-                               dose_1st=dose_1st,
-                               dose_2st=dose_2st
-                               )
-        covid_info.save()
+        try:
+            covid_info = CovidInfo(
+                                   id=uuid.uuid4(),
+                                   total_deaths=total_deaths,
+                                   daily_deaths_tw=daily_deaths_tw,
+                                   total_cases=total_cases,
+                                   daily_cases=daily_cases,
+                                   total_cases_tw=total_cases_tw,
+                                   daily_cases_tw=daily_cases_tw,
+                                   tw_vaccinated=tw_vaccinated,
+                                   dose1st=dose1st,
+                                   dose2st=dose2st
+                                   )
+            db.session.add(covid_info)
+            db.session.commit()
+        except Exception as err:
+            current_app.logger.error(f'sendActionRecord 發生錯誤: {err}')
+            lineNotifyMessage(config.LINE_TOKEN,
+                              f'溫馨提醒: 數據插入資料 發生錯誤: {err}')
