@@ -27,7 +27,7 @@ class Config(object):
         'mysql+pymysql',
         'devuser2',
         'devADMIN2020',
-        '35.221.251.51',
+        '10.140.0.12',
         3306,
         'pss2.0'
     )
@@ -62,8 +62,8 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 16,
-        'minute': 10,
+        'hour': 11,
+        'minute': 36,
         'second': 10,
     }]
 
@@ -117,7 +117,7 @@ class ProductionConfig(Config):
         'mysql+pymysql',
         'devuser2',
         'devADMIN2020',
-        '35.221.251.51',
+        '10.140.0.12',
         3306,
         'pss2.0'
     )
@@ -135,7 +135,7 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 16,
+        'hour': 15,
         'minute': 10,
         'second': 10,
     }]
