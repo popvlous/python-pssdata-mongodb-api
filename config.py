@@ -62,9 +62,9 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 15,
-        'minute': 50,
-        'second': 50,
+        'hour': 14,
+        'minute': 10,
+        'second': 10,
     }]
 
     # JOBS = [{
@@ -135,9 +135,9 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 15,
-        'minute': 50,
-        'second': 50,
+        'hour': 14,
+        'minute': 10,
+        'second': 10,
     }]
 
     SCHEDULER_TIMEZONE = 'Asia/Shanghai'  # 配置時區
