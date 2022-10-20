@@ -29,7 +29,7 @@ class CovidInfo(db.Model):
     daily_cases = db.Column(db.String(128))  # 每日確診
     total_cases_tw = db.Column(db.String(128))  # 本土累積確診
     daily_cases_tw = db.Column(db.String(128))  # 本土每日確診
-    update_time = db.Column(DateTime, default=datetime.utcnow)  # 更新時間
+    update_time = db.Column(DateTime, default=datetime.now)  # 更新時間
     tw_vaccinated = db.Column(db.String(128))  #累積疫苗
     dose1st = db.Column(db.String(128))  # 第一劑
     dose2st = db.Column(db.String(128))  # 第二劑
