@@ -25,12 +25,21 @@ class Config(object):
 
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
         'mysql+pymysql',
-        'devuser2',
-        'devADMIN2020',
+        'pssuser',
+        'Pyrarc88user',
         '10.140.0.214',
-        3306,
+        6033,
         'pss2.0'
     )
+
+    # SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
+    #     'mysql+pymysql',
+    #     'devuser2',
+    #     'devADMIN2020',
+    #     '10.140.0.214',
+    #     3306,
+    #     'pss2.0'
+    # )
 
 
     # mongo_host = 'mongodb://{}:{}/{}'.format(
@@ -62,8 +71,8 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 16,
-        'minute': 55,
+        'hour': 17,
+        'minute': 10,
         'second': 10,
     }]
 
@@ -115,10 +124,10 @@ class ProductionConfig(Config):
 
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
         'mysql+pymysql',
-        'devuser2',
-        'devADMIN2020',
+        'pssuser',
+        'Pyrarc88user',
         '10.140.0.214',
-        3306,
+        6033,
         'pss2.0'
     )
 
@@ -135,8 +144,8 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 16,
-        'minute': 55,
+        'hour': 17,
+        'minute': 10,
         'second': 10,
     }]
 
