@@ -32,6 +32,7 @@ class Config(object):
         'pss2.0'
     )
 
+
     # SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
     #     'mysql+pymysql',
     #     'devuser2',
@@ -71,7 +72,7 @@ class Config(object):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 17,
+        'hour': 15,
         'minute': 10,
         'second': 10,
     }]
@@ -144,7 +145,7 @@ class ProductionConfig(Config):
         'func': 'jobs:sendActionRecordJob',
         'trigger': 'cron',
         'day': '*',
-        'hour': 17,
+        'hour': 15,
         'minute': 10,
         'second': 10,
     }]
